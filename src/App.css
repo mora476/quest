@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+.inpt{
+  border: none;
+  background: #d6c7c7;
+  color: greenyellow;
+  box-shadow:  0 2px 4px 3px #320064;
+}
+.color{
+  background: #46d79b;
+  color: #320064;
+
+}
