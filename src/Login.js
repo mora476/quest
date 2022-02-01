@@ -2,7 +2,6 @@ import {useState} from "react";
 
 
 export const Login=()=>{
-    const [a, setA] = useState(0)
     const [login, setLogin] = useState("")
     const [password, setPassword] = useState("")
     return (
