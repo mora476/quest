@@ -1,16 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-import {useState} from "react";
-import {Login} from "./Login";
-import {Registration} from "./aaa";
-import {MenuAuth} from "./bbb";
+import {useDispatch, useSelector} from "react-redux";
+import {authorization} from "./store/AuthStore";
+import axios from "axios";
+import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
+import {Login} from "./components/Login";
+import {Home} from "./components/Home";
+import {useEffect, useState} from "react";
 
 function App() {
-   return(
-       <div>
-          <MenuAuth></MenuAuth>
-       </div>
-   )
+    const token = useSelector((state) => state.auth)
+    const navigate = useNavigate()
+    const [isAuth,setAuth] = useState(token.isAuth)
+
+    useEffect(() => {
+        if (!isAuth){
+            navigate("/auth")
+        }
+    },[isAuth])
+
+    return (<div>
+            <Routes>
+                <Route path="/" element={Home()}/>
+                <Route path="/auth" element={Login()}/>
+            </Routes>
+        </div>
+    )
 }
 
 export default App;
