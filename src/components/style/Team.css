@@ -1,0 +1,16 @@
+.team-block{
+    border: solid 2px #9b9b9b;
+    width: 500px;
+    border-radius: 5px 0 0 5px;
+}
+
+.team-info{
+    background: #252424;
+    color: rgba(89,255,0,1);
+}
+
+.users{
+    background: #252424;
+    color:rgba(89,255,0,1);
+    padding: 5px;
+}

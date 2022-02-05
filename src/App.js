@@ -1,11 +1,12 @@
 import './App.css';
 import {useDispatch, useSelector} from "react-redux";
-import {authorization} from "./store/AuthStore";
-import axios from "axios";
 import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
-import {Login} from "./components/Login";
 import {Home} from "./components/Home";
 import {useEffect, useState} from "react";
+import {FormAuth} from "./components/FormAuth/FormAuth";
+import {ScreenAchievement} from "./components/achievement/screenAchievement";
+import {NavBar} from "./components/NavBar";
+import {Mail} from "./components/Mail";
 
 function App() {
     const token = useSelector((state) => state.auth)
@@ -19,9 +20,12 @@ function App() {
     },[isAuth])
 
     return (<div>
+            <NavBar/>
             <Routes>
                 <Route path="/" element={Home()}/>
-                <Route path="/auth" element={Login()}/>
+                <Route path="/auth" element={FormAuth()}/>
+                <Route path={"/achievement"} element={ScreenAchievement()}/>
+                <Route path={"/email"} element={Mail()}/>
             </Routes>
         </div>
     )

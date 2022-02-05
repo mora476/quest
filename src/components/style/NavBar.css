@@ -1,0 +1,27 @@
+.nav-bar{
+    background: #252424;
+    color: rgba(89,255,0,1);
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.linc{
+    color: rgba(89,255,0,1);
+    margin: 5px;
+    text-decoration: none;
+}
+.logout{
+    color: rgba(89,255,0,1);
+    margin: 5px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    transition-duration: 1s;
+    padding: 5px;
+}
+.logout:hover{
+    background: #002aff;
+    color: #fffefe;
+}
