@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate-code": "openapi-generator-cli generate --skip-validate-spec -g javascript -i docs/open-api.yaml -o ./src/api"
+    "generate-code": "openapi-generator-cli generate --skip-validate-spec -g javascript -i docs/open-api.json -o ./src/api"
   },
   "eslintConfig": {
     "extends": [

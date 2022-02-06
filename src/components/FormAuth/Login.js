@@ -1,7 +1,7 @@
 import React from "react";
-import {authorization} from "../../store/AuthStore";
+import {authorization, logout} from "../../store/AuthStore";
 import axios from "axios";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import "./style/Login.css"
 import {Registration} from "./Registration";
@@ -14,7 +14,9 @@ export const Login = (props) => {
     let password
 
     async function test(login, password) {
-        let res = await axios.post("/auth/login", {login: login, password: password})
+        let res = await axios.post("/auth/login", {login: login, password: password}).catch(()=>{
+            dispatch(logout())
+        })
         return res.data
     }
 
