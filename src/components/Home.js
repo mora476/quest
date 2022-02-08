@@ -1,14 +1,15 @@
 import React from "react";
-import {useSelector} from "react-redux";
+
+import {Teams} from "./Teams";
+import {UBot} from "./UBot";
+import {Social} from "./social";
 
 
 export const Home = ()=>{
-    const auth = useSelector((state) => state.auth)
-
-
     return(
         <div>
-            {auth.isAuth.toString()}
+            <Teams/>
+           <Social/>
         </div>
     )
 }

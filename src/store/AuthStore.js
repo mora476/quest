@@ -1,20 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
-import axios from "axios";
+
 
 const authStore = createSlice({
     name: 'authStore',
     initialState: {
-        t: "",
-        isAuth: false,
+        token: localStorage.getItem("token"),
+        isAuth: !!localStorage.getItem("token"),
     },
     reducers: {
         authorization: (state,action) => {
-            state.t = action.payload
+            state.token = action.payload
             state.isAuth = true
+            localStorage.setItem("token", action.payload)
         },
+        logout:(state)=>{
+            localStorage.removeItem("token")
+            state.token = ""
+            state.isAuth = false
+        }
     },
 })
 
-export const {authorization} = authStore.actions
+export const { authorization,logout} = authStore.actions
 
 export default authStore.reducer
