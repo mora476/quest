@@ -15,6 +15,6 @@ const authStore = createSlice({
     },
 })
 
-export const { authorization} = authStore.actions
+export const {authorization} = authStore.actions
 
 export default authStore.reducer

@@ -6,6 +6,7 @@ import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import {Login} from "./components/Login";
 import {Home} from "./components/Home";
 import {useEffect, useState} from "react";
+import {Registration} from "./components/Registration";
 
 function App() {
     const token = useSelector((state) => state.auth)
@@ -14,7 +15,7 @@ function App() {
 
     useEffect(() => {
         if (!isAuth){
-            navigate("/auth")
+            navigate("/Reg")
         }
     },[isAuth])
 
@@ -22,6 +23,7 @@ function App() {
             <Routes>
                 <Route path="/" element={Home()}/>
                 <Route path="/auth" element={Login()}/>
+                <Route path="/Reg" element={Registration()}/>
             </Routes>
         </div>
     )
