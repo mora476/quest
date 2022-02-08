@@ -26,3 +26,8 @@
 .inputT::placeholder {
     color: #fff;
 }
+
+.Spisocheck{
+    display: grid;
+    column-gap: 50px;
+}
