@@ -5,7 +5,7 @@ const authStore = createSlice({
     name: 'authStore',
     initialState: {
         token: localStorage.getItem("token"),
-        isAuth: !!localStorage.getItem("token"),
+        isAuth: true//!!localStorage.getItem("token"),
     },
     reducers: {
         authorization: (state,action) => {

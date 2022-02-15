@@ -39,7 +39,7 @@ let arrayMail = [{
 
 export const Mail = () => {
     const token = useSelector((state) => state.auth.token)
-    const [eventID, setEventID] = useState(-1)
+    const [eventID, setEventID] = useState(2)
 
     useEffect(() => {
 
