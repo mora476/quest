@@ -15,11 +15,11 @@ function App() {
     const navigate = useNavigate()
     const [isAuth,setAuth] = useState(token.isAuth)
 
-    useEffect(() => {
+   /* useEffect(() => {
         if (!isAuth){
             navigate("/auth")
         }
-    },[isAuth])
+    },[isAuth])*/
 
     return (<div>
             <NavBar/>
