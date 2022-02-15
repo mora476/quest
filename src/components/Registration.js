@@ -5,6 +5,7 @@ import axios from "axios";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import "./style/Regist.css"
+import {FormAuth} from "./FormAuth/FormAuth";
 
 export const Registration = () => {
 
@@ -26,7 +27,7 @@ export const Registration = () => {
     }
 
     function Spisok() {
-        if (LN.length > 0 && Name.length>0 && Tel.length>0 && GR.length>0 && MN.length>0){
+        if (LN.length > 0 && Tel.length>0 && MN.length>0){
             return (
                 setMember([...Member, {lastname: LN, name: Name, middlename: MN, phone: Tel, groupName: GR}])
             )
@@ -36,7 +37,8 @@ export const Registration = () => {
 
     return (
         <div className={"mainMenu"}>
-                <div>
+            <div className={'Ramka'}>
+                <div className={'A'}>
 
                     <div><input className={"inputT"}
                                  type={"text"}
@@ -59,10 +61,11 @@ export const Registration = () => {
                                 placeholder={"Введите группу"}
                                 onChange={(event) => {GR=event.target.value}}/></div>
 
-                    <button className={"inputT"}
+                    <button className={"inputTTT"}
                         onClick = {Spisok}>
                         Добавить участника
                     </button>
+
                 </div>
 
             <div className={'Spisocheck'}>
@@ -70,8 +73,7 @@ export const Registration = () => {
                 <div> {Member.map((reptile, index) => <li key={index}>{reptile.lastname} {reptile.name} {" "}
                     {reptile.middlename} {reptile.groupName} {reptile.phone}</li>)} </div>
             </div>
-
-            <div>
+            <div className={'B'}>
                 <div><input className={"groupRegist"}
                             type={"text"}
                             placeholder={"Введите название команды"}
@@ -82,7 +84,7 @@ export const Registration = () => {
                             placeholder={"Введите пароль"}
                             onChange={(event) => {Password=event.target.value}}/></div>
 
-                <button className={"groupRegist"}
+                <button className={"inputTTT"}
                         onClick={async () => {
                             if (Password>0 && KommandName>0 && Member.filter((it)=>(
                                 it.isCaptain === true
@@ -96,6 +98,7 @@ export const Registration = () => {
                         }}>
                     Regist
                 </button>
+            </div>
             </div>
         </div>
     )

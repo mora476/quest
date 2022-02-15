@@ -8,6 +8,7 @@ import {ScreenAchievement} from "./components/achievement/screenAchievement";
 import {NavBar} from "./components/NavBar";
 import {Mail} from "./components/Mail";
 import {Registration} from "./components/Registration";
+import {Login} from "./components/FormAuth/Login";
 
 function App() {
     const token = useSelector((state) => state.auth)
@@ -26,7 +27,7 @@ function App() {
                 <Route path="/" element={Home()}/>
                 <Route path={"/achievement"} element={ScreenAchievement()}/>
                 <Route path={"/email"} element={Mail()}/>
-                <Route path="/auth" element={Login()}/>
+                <Route path="/auth" element={FormAuth()}/>
                 <Route path="/Reg" element={Registration()}/>
             </Routes>
         </div>
