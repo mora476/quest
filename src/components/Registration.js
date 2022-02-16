@@ -19,10 +19,17 @@ export const Registration = () => {
     let Password
     const [KommandName, setKommandName] = useState('')
     const [Member, setMember] = useState([])
+    const [flag, setFlag] = useState(true)
+
+    const choise = () => {
+        return (!flag) ? KKK() : FFF()
+    }
 
     async function test(KommandName, password, Name, Tel) {
-        let res = await axios.post("/auth/registration", {login: KommandName, password: Password, lastname: LN,
-            name: Name, middlename: MN, phone: Tel, groupName: GR})
+        let res = await axios.post("/auth/registration", {
+            login: KommandName, password: Password, lastname: LN,
+            name: Name, middlename: MN, phone: Tel, groupName: GR
+        })
         return res.data
     }
 
@@ -35,51 +42,73 @@ export const Registration = () => {
         return
     }
 
-    return (
-        <div className={"mainMenu"}>
-            <div className={'Ramka'}>
+return(
+    <div>
+        {choise()}
+    </div>
+)
+    function FFF (){
+        return (
+            <div className={'FFF'}>
                 <div className={'A'}>
+                <div><input className={"inputT"}
+                            type={"text"}
+                            placeholder={"Введите фамилию"}
+                            onChange={(event) => {LN=event.target.value}}/></div>
+                <div><input className={"inputT"}
+                            type={"text"}
+                            placeholder={"Введите имя"}
+                            onChange={(event) => {Name=event.target.value}}/></div>
+                <div><input className={"inputT"}
+                            type={"text"}
+                            placeholder={"Введите отчество"}
+                            onChange={(event) => {MN=event.target.value}}/></div>
+                <div><input className={"inputT"}
+                            type={"text"}
+                            placeholder={"Введите номер телефона"}
+                            onChange={(event) => {Tel=event.target.value}}/></div>
+                <div><input className={"inputT"}
+                            type={"text"}
+                            placeholder={"Введите группу"}
+                            onChange={(event) => {GR=event.target.value}}/></div>
 
-                    <div><input className={"inputT"}
-                                 type={"text"}
-                                 placeholder={"Введите фамилию"}
-                                 onChange={(event) => {LN=event.target.value}}/></div>
-                    <div><input className={"inputT"}
-                                type={"text"}
-                                placeholder={"Введите имя"}
-                                onChange={(event) => {Name=event.target.value}}/></div>
-                    <div><input className={"inputT"}
-                                type={"text"}
-                                placeholder={"Введите отчество"}
-                                onChange={(event) => {MN=event.target.value}}/></div>
-                    <div><input className={"inputT"}
-                                type={"text"}
-                                placeholder={"Введите номер телефона"}
-                                onChange={(event) => {Tel=event.target.value}}/></div>
-                    <div><input className={"inputT"}
-                                type={"text"}
-                                placeholder={"Введите группу"}
-                                onChange={(event) => {GR=event.target.value}}/></div>
-
-                    <button className={"inputTTT"}
+                <button className={'inputTTT'}
                         onClick = {Spisok}>
-                        Добавить участника
-                    </button>
-
+                    Добавить участника
+                </button>
                 </div>
 
-            <div className={'Spisocheck'}>
-                Состав команды {KommandName}:
-                <div> {Member.map((reptile, index) => <li key={index}>{reptile.lastname} {reptile.name} {" "}
-                    {reptile.middlename} {reptile.groupName} {reptile.phone}</li>)} </div>
-            </div>
-            <div className={'B'}>
-                <div><input className={"groupRegist"}
+                <div className={'B'}>
+                    <div className={'Ramka'}>
+
+                <div>
+                    состав команды{KommandName}:
+                    <div className={'Probel'}></div>
+                    <div> {Member.map((reptile, index) => <li key={index}>{reptile.lastname} {reptile.name} {" "}
+                        {reptile.middlename} {reptile.groupName} {reptile.phone}</li>)} </div>
+                </div>
+
+                    <button className={"inputTTT"} onClick={() => {
+                        setFlag(!flag)
+                    }}>
+                        Продолжить регистрацию
+                    </button>
+                </div>
+                </div>
+                </div>
+        )
+    }
+
+    function KKK (){
+    return(
+        <>
+            <div className={'FKK'}>
+                <div><input className={"inputT"}
                             type={"text"}
                             placeholder={"Введите название команды"}
                             onChange={(event => {setKommandName(event.target.value)})}/></div>
 
-                <div><input className={"groupRegist"}
+                <div><input className={"inputT"}
                             type={"text"}
                             placeholder={"Введите пароль"}
                             onChange={(event) => {Password=event.target.value}}/></div>
@@ -91,7 +120,7 @@ export const Registration = () => {
                             )).length === 1)
                             {
                                 console.log(KommandName + " " + Tel +  " " + GR + " " + Password + " " + LN + " "+ MN
-                                + " " + Name)
+                                    + " " + Name)
                                 dispatch(registration((await test(KommandName, Password, LN, Name, MN, Tel, GR))))
                                 navigate("/Reg")
                             }
@@ -99,7 +128,8 @@ export const Registration = () => {
                     Regist
                 </button>
             </div>
-            </div>
-        </div>
+        </>
     )
+}
+
 }
