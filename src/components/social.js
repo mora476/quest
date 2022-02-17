@@ -40,7 +40,7 @@ export const Social = () => {
                 </h4>
                 <input className={"i3"} onChange={(e)=>setQ5(e.target.value)}/>
             </div>
-            <button>
+            <button className={'i4'}>
                 Отправить
             </button>
         </div>

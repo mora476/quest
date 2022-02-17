@@ -18,3 +18,19 @@
 .container {
     padding: 2px 16px;
 }
+
+.Podvodochka{
+    color: white;
+    text-shadow:
+            0 0 25px #3e0b0b,
+            0 0 5px #3e0b0b,
+            0 0 5px #fff,
+            0 0 25px #3e0b0b,
+            0 0 0px #30e7e2,
+            0 0 0px #30e7e2,
+            0 0 0px #30e7e2,
+            0 0 25px #3e0b0b;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    animation: neon-1 .1s ease-in-out infinite alternate;
+}

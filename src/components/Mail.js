@@ -60,8 +60,8 @@ export const Mail = () => {
                     <div><h2>{it.login}</h2></div>
                     {it.text}
                     <div>
-                        <input disabled={it.id !== eventID}/>
-                        <button disabled={it.id !== eventID} onClick={it.event}>Ответить</button>
+                        <input className={'FUCK'} disabled={it.id !== eventID}/>
+                        <button className={'FUCK'} disabled={it.id !== eventID} onClick={it.event}>Ответить</button>
                     </div>
                 </div>
             )

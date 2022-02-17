@@ -21,7 +21,7 @@ function App() {
         }
     },[isAuth])*/
 
-    return (<div>
+    return (<div  className={'App'}>
             <NavBar/>
             <Routes>
                 <Route path="/" element={Home()}/>
@@ -30,7 +30,9 @@ function App() {
                 <Route path="/auth" element={FormAuth()}/>
                 <Route path="/Reg" element={Registration()}/>
             </Routes>
+            <div className={'html'}></div>
         </div>
+
     )
 }
 

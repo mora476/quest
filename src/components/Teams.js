@@ -64,7 +64,7 @@ export const Teams = () => {
                     <h3>Название команды {team.name}</h3>
                 </div>
                 {team.array.map((v, index) =>
-                    <div className={"users i2"} key={index}>
+                    <div className={"users i22"} key={index}>
                         <h4>{v.lastName} {v.name} {v.middleName ? v.middleName : ""}</h4>
                         <p>Группа: {v.groupName}</p>
                         <p>Телефон: {v.phone}</p>

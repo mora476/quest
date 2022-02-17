@@ -52,7 +52,7 @@ export const ScreenAchievement = () => {
     function getNull() {
         return (
             (list.length === 0) ?
-                <div>
+                <div className={'Podvodochka'}>
                     <img src={w}/>
                     <h2>Вы еще ничего не открыли</h2>
                 </div>
