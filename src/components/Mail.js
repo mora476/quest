@@ -17,7 +17,7 @@ let arrayMail = [{
     id: 1,
     text: (<div>
         Рад что мы поняли друг друга, держи
-        <Link to={"/test"}>Сайт</Link>
+        <Link to={"/test"}> Сайт</Link>
     </div>),
     login: "anim228",
     event: () => {

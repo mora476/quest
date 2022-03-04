@@ -1,13 +1,16 @@
 .mainMenu {
-    margin: 200px;
     display: flex;
+    height: 175px;
+    width: 100%;
+    margin-top: 150px;
     align-items: center;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
 
 }
 
 .menu {
-    display: flex;
+    display: grid;
     flex-direction: column;
     border-radius: 5px;
     border: none;

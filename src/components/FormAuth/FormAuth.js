@@ -14,7 +14,7 @@ export const FormAuth = () => {
     return (
         <div>
             {mode()}
-            <button className={'Bu'} onClick={()=>setIsRegist(!isRegist)}>
+            <button className={'btn'} onClick={()=>setIsRegist(!isRegist)}>
                 {isRegist ? "Регистрация":"Войти?"}
             </button>
         </div>
