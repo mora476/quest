@@ -8,52 +8,17 @@ export const Teams = () => {
     const token = useSelector((state) => state.auth.token)
     const dispatch = useDispatch()
     const [team, setTeam] = useState({
-        name: "Загрузка", array: [{
-            lastName: "Tsimbaliuk",
-            name: "Alexander",
-            phone: "89135651556",
-            groupName: "IS-20"
-        }, {
-            lastName: "Tsimbaliuk",
-            name: "Alexander",
-            phone: "89135651556",
-            groupName: "IS-20"
-        }, {
-            lastName: "Tsimbaliuk",
-            name: "Alexander",
-            phone: "89135651556",
-            groupName: "IS-20"
-        }, {
-            lastName: "Tsimbaliuk",
-            name: "Alexander",
-            phone: "89135651556",
-            groupName: "IS-20"
-        }, {
-            lastName: "Tsimbaliuk",
-            name: "Alexander",
-            phone: "89135651556",
-            groupName: "IS-20"
-        }, {
-            lastName: "Tsimbaliuk",
-            name: "Alexander",
-            phone: "89135651556",
-            groupName: "IS-20"
-        }, {
-            lastName: "Tsimbaliuk",
-            name: "Alexander",
-            phone: "89135651556",
-            groupName: "IS-20"
-        }]
+        name: "Загрузка..", array: []
     })
-
     useEffect(() => {
+        console.log(token)
          axios.get("team", {
              headers: {'Authorization': 'Bearer ' + token}
          }).then((res) => {
              setTeam(res.data)
-         }).catch(reason => {
+         })/*.catch(reason => {
              dispatch(logout())
-         })
+         })*/
      }, [])
 
     return (<div>

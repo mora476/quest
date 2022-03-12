@@ -5,13 +5,14 @@ const authStore = createSlice({
     name: 'authStore',
     initialState: {
         token: localStorage.getItem("token"),
-        isAuth: true//!!localStorage.getItem("token"),
+        isAuth: !!localStorage.getItem("token"),
     },
     reducers: {
         authorization: (state,action) => {
             state.token = action.payload
             state.isAuth = true
             localStorage.setItem("token", action.payload)
+            console.log(localStorage.getItem("token"))
         },
         logout:(state)=>{
             localStorage.removeItem("token")

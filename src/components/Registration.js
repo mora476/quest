@@ -1,11 +1,9 @@
-import React from "react";
-import {useState} from "react";
+import React, {useState} from "react";
 import {registration} from "../store/RegistStore";
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import "./style/Regist.css"
-import {FormAuth} from "./FormAuth/FormAuth";
 
 export const Registration = () => {
 
@@ -27,109 +25,125 @@ export const Registration = () => {
 
     async function test(KommandName, password, Name, Tel) {
         let res = await axios.post("/auth/registration", {
-            login: KommandName, password: Password, lastname: LN,
-            name: Name, middlename: MN, phone: Tel, groupName: GR
+            login: KommandName,
+            password: Password,
+            array: Member
         })
         return res.data
     }
 
     function Spisok() {
-        if (LN.length > 0 && Tel.length>0 && MN.length>0){
+        if (LN.length > 0 && Tel.length > 0 && MN.length > 0) {
             return (
-                setMember([...Member, {lastname: LN, name: Name, middlename: MN, phone: Tel, groupName: GR}])
+                setMember([...Member, {lastName: LN, name: Name, middleName: MN, phone: Tel, groupName: GR,isCaptain: false}])
             )
         }
         return
     }
 
-return(
-    <div>
-        {choise()}
-    </div>
-)
-    function FFF (){
+    return (
+        <div>
+            {choise()}
+        </div>
+    )
+
+    function FFF() {
         return (
             <div className={'FFF'}>
                 <div className={'A'}>
-                <div><input className={"inputT"}
-                            type={"text"}
-                            placeholder={"Введите фамилию"}
-                            onChange={(event) => {LN=event.target.value}}/></div>
-                <div><input className={"inputT"}
-                            type={"text"}
-                            placeholder={"Введите имя"}
-                            onChange={(event) => {Name=event.target.value}}/></div>
-                <div><input className={"inputT"}
-                            type={"text"}
-                            placeholder={"Введите отчество"}
-                            onChange={(event) => {MN=event.target.value}}/></div>
-                <div><input className={"inputT"}
-                            type={"text"}
-                            placeholder={"Введите номер телефона"}
-                            onChange={(event) => {Tel=event.target.value}}/></div>
-                <div><input className={"inputT"}
-                            type={"text"}
-                            placeholder={"Введите группу"}
-                            onChange={(event) => {GR=event.target.value}}/></div>
+                    <div><input className={"inputT"}
+                                type={"text"}
+                                placeholder={"Введите фамилию"}
+                                onChange={(event) => {
+                                    LN = event.target.value
+                                }}/></div>
+                    <div><input className={"inputT"}
+                                type={"text"}
+                                placeholder={"Введите имя"}
+                                onChange={(event) => {
+                                    Name = event.target.value
+                                }}/></div>
+                    <div><input className={"inputT"}
+                                type={"text"}
+                                placeholder={"Введите отчество"}
+                                onChange={(event) => {
+                                    MN = event.target.value
+                                }}/></div>
+                    <div><input className={"inputT"}
+                                type={"text"}
+                                placeholder={"Введите номер телефона"}
+                                onChange={(event) => {
+                                    Tel = event.target.value
+                                }}/></div>
+                    <div><input className={"inputT"}
+                                type={"text"}
+                                placeholder={"Введите группу"}
+                                onChange={(event) => {
+                                    GR = event.target.value
+                                }}/></div>
 
-                <button className={'inputTTT'}
-                        onClick = {Spisok}>
-                    Добавить участника
-                </button>
+                    <button className={'inputTTT'}
+                            onClick={Spisok}>
+                        Добавить участника
+                    </button>
                 </div>
 
                 <div className={'B'}>
                     <div className={'Ramka'}>
 
-                <div>
-                    состав команды{KommandName}:
-                    <div className={'Probel'}></div>
-                    <div> {Member.map((reptile, index) => <li key={index}>{reptile.lastname} {reptile.name} {" "}
-                        {reptile.middlename} {reptile.groupName} {reptile.phone}</li>)} </div>
-                </div>
+                        <div>
+                            состав команды{KommandName}:
+                            <div className={'Probel'}></div>
+                            <div> {Member.map((reptile, index) => <li
+                                key={index}>{reptile.lastName} {reptile.name} {" "}
+                                {reptile.middleName} {reptile.groupName} {reptile.phone}</li>)} </div>
+                        </div>
 
-                    <button className={"inputTTT"} onClick={() => {
-                        setFlag(!flag)
-                    }}>
-                        Продолжить регистрацию
-                    </button>
+                        <button className={"inputTTT"} onClick={() => {
+                            setFlag(!flag)
+                        }}>
+                            Продолжить регистрацию
+                        </button>
+                    </div>
                 </div>
-                </div>
-                </div>
+            </div>
         )
     }
 
-    function KKK (){
-    return(
-        <>
-            <div className={'FKK'}>
-                <div><input className={"inputT"}
-                            type={"text"}
-                            placeholder={"Введите название команды"}
-                            onChange={(event => {setKommandName(event.target.value)})}/></div>
+    function KKK() {
+        return (
+            <>
+                <div className={'FKK'}>
+                    <div><input className={"inputT"}
+                                type={"text"}
+                                placeholder={"Введите название команды"}
+                                onChange={(event => {
+                                    setKommandName(event.target.value)
+                                })}/></div>
 
-                <div><input className={"inputT"}
-                            type={"text"}
-                            placeholder={"Введите пароль"}
-                            onChange={(event) => {Password=event.target.value}}/></div>
+                    <div><input className={"inputT"}
+                                type={"text"}
+                                placeholder={"Введите пароль"}
+                                onChange={(event) => {
+                                    Password = event.target.value
+                                }}/></div>
 
-                <button className={"inputTTT"}
-                        onClick={async () => {
-                            if (Password>0 && KommandName>0 && Member.filter((it)=>(
-                                it.isCaptain === true
-                            )).length === 1)
-                            {
-                                console.log(KommandName + " " + Tel +  " " + GR + " " + Password + " " + LN + " "+ MN
-                                    + " " + Name)
-                                dispatch(registration((await test(KommandName, Password, LN, Name, MN, Tel, GR))))
-                                navigate("/Reg")
-                            }
-                        }}>
-                    Regist
-                </button>
-            </div>
-        </>
-    )
-}
+                    <button className={"inputTTT"}
+                            onClick={async () => {
+                               /* if (Password > 0 && KommandName > 0 && Member.filter((it) => (
+                                    it.isCaptain === true
+                                )).length === 1) {*/
+                                    console.log(KommandName + " " + Tel + " " + GR + " " + Password + " " + LN + " " + MN
+                                        + " " + Name)
+                                    dispatch(registration((await test(KommandName, Password, LN, Name, MN, Tel, GR))))
+                                    navigate("/Reg")
+                                }
+                            }/*}*/>
+                        Regist
+                    </button>
+                </div>
+            </>
+        )
+    }
 
 }

@@ -7,19 +7,21 @@ import {FormAuth} from "./components/FormAuth/FormAuth";
 import {ScreenAchievement} from "./components/achievement/screenAchievement";
 import {NavBar} from "./components/NavBar";
 import {Mail} from "./components/Mail";
+import axios from "axios";
 import {Registration} from "./components/Registration";
 import {Login} from "./components/FormAuth/Login";
 
 function App() {
     const token = useSelector((state) => state.auth)
     const navigate = useNavigate()
-    const [isAuth,setAuth] = useState(token.isAuth)
+    const [isAuth,] = useState(token.isAuth)
 
-   /* useEffect(() => {
+    useEffect(() => {
+        console.log(token)
         if (!isAuth){
             navigate("/auth")
         }
-    },[isAuth])*/
+    },[isAuth])
 
     return (<div  className={'App'}>
             <NavBar/>
@@ -30,7 +32,7 @@ function App() {
                 <Route path="/auth" element={FormAuth()}/>
                 <Route path="/Reg" element={Registration()}/>
             </Routes>
-            <div className={'html'}></div>
+            <div className={'html'}/>
         </div>
 
     )

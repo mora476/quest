@@ -8,7 +8,7 @@ import {Social} from "./social";
 export const Home = ()=>{
     return(
         <div className={"i1"}>
-            <Social/>
+            <Teams/>
         </div>
     )
 }

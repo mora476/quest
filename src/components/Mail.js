@@ -11,16 +11,28 @@ let arrayMail = [{
         "                eligendi exercitationem fuga harum itaque maxime, mollitia natus perferendis repellendus similique vitae\n" +
         "                voluptate.",
     login: "anim228",
-    event: () => {
+    event: (password, token) => {
+        axios.get("event/check?code=" + password, {
+            headers: {'Authorization': 'Bearer ' + token}
+        }).then(e => {
+            if (e.data === false)
+                alert("Ответ не верный")
+        })
     }
 }, {
     id: 1,
     text: (<div>
         Рад что мы поняли друг друга, держи
-        <Link to={"/test"}>Сайт</Link>
+        <Link to={"/test"}> Сайт</Link>
     </div>),
     login: "anim228",
-    event: () => {
+    event: (password, token) => {
+        axios.get("event/check?code=" + password, {
+            headers: {'Authorization': 'Bearer ' + token}
+        }).then(e => {
+            if (e.data === false)
+                alert("Ответ не верный")
+        })
     }
 },
     {
@@ -30,7 +42,13 @@ let arrayMail = [{
             "                eligendi exercitationem fuga harum itaque maxime, mollitia natus perferendis repellendus similique vitae\n" +
             "                voluptate.",
         login: "awdac",
-        event: () => {
+        event: (password, token) => {
+            axios.get("event/check?code=" + password, {
+                headers: {'Authorization': 'Bearer ' + token}
+            }).then(e => {
+                if (e.data === false)
+                    alert("Ответ не верный")
+            })
         }
     }
 ]
@@ -42,7 +60,6 @@ export const Mail = () => {
     const [eventID, setEventID] = useState(2)
 
     useEffect(() => {
-
         axios.get("event", {
             headers: {'Authorization': 'Bearer ' + token}
         }).then((e) => {
@@ -52,24 +69,38 @@ export const Mail = () => {
 
 
     function getMassage() {
-        console.log(eventID)
+        let res = arrayMail.find((it) => it.id === eventID)
+
         return eventID < 0 ?
             <div>писем нет</div> :
-            arrayMail.filter((it) => it.id <= eventID).map((it) =>
-                <div className={it.id !== eventID ? "mail-disable" : "mail"} key={it.id}>
-                    <div><h2>{it.login}</h2></div>
-                    {it.text}
-                    <div>
-                        <input className={'FUCK'} disabled={it.id !== eventID}/>
-                        <button className={'FUCK'} disabled={it.id !== eventID} onClick={it.event}>Ответить</button>
-                    </div>
-                </div>
-            )
+            <OneMail text={res.text} event={res.event} eventID={eventID} id={res.id} login={res.login}/>
+        /*arrayMail.filter((it) => it.id <= eventID).map((it) =>
+            <OneMail text={it.text} event={it.event} eventID={eventID} id={it.id} login={it.login}/>
+        )*/
     }
 
     return (
         <div>
             {getMassage()}
+        </div>
+    )
+}
+
+export const OneMail = ({id, eventID, text, login, event}) => {
+
+    const [answer, setAnswer] = useState("")
+    const token = useSelector((state) => state.auth.token)
+    return (
+        <div className={id !== eventID ? "mail-disable" : "mail"} key={id}>
+            <div><h2>{login}</h2></div>
+            {text}
+            <div>
+                <input className={'FUCK'} disabled={id !== eventID} onChange={e => {
+                    setAnswer(e.target.value)
+                }}/>
+                <button className={'FUCK'} disabled={id !== eventID} onClick={() => event(answer, token)}>Ответить
+                </button>
+            </div>
         </div>
     )
 }

@@ -33,7 +33,6 @@ export const Login = (props) => {
                 }}/>
 
                 <button className={"inputTTT"} onClick={async () => {
-                    console.log(login + " " + password)
                     dispatch(authorization((await test(login, password))))
                     navigate("/")
                 }}>
