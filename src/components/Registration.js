@@ -103,6 +103,7 @@ return(
     return(
         <>
             <div className={'FKK'}>
+                <div className={'oblastt'}>
                 <div><input className={"inputT"}
                             type={"text"}
                             placeholder={"Введите название команды"}
@@ -127,7 +128,8 @@ return(
                         }}>
                     Regist
                 </button>
-            </div>
+                </div>
+                </div>
         </>
     )
 }
