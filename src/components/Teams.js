@@ -26,7 +26,7 @@ export const Teams = () => {
             </div>
             <div className={"team-block"}>
                 <div className={"team-info"}>
-                    <h3>Название команды {team.name}</h3>
+                    <h3> {team.name}</h3>
                 </div>
                 {team.array.map((v, index) =>
                     <div className={"users i22"} key={index}>

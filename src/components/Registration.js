@@ -33,9 +33,9 @@ export const Registration = () => {
     }
 
     function Spisok() {
-        if (LN.length > 0 && Tel.length > 0 && MN.length > 0) {
+        if (LN.length > 0 && Tel.length>0 && MN.length>0){
             return (
-                setMember([...Member, {lastName: LN, name: Name, middleName: MN, phone: Tel, groupName: GR,isCaptain: false}])
+                setMember([...Member, {lastname: LN, name: Name, middlename: MN, phone: Tel, groupName: GR}])
             )
         }
         return
@@ -110,16 +110,15 @@ export const Registration = () => {
         )
     }
 
-    function KKK() {
-        return (
-            <>
-                <div className={'FKK'}>
-                    <div><input className={"inputT"}
-                                type={"text"}
-                                placeholder={"Введите название команды"}
-                                onChange={(event => {
-                                    setKommandName(event.target.value)
-                                })}/></div>
+    function KKK (){
+    return(
+        <>
+            <div className={'FKK'}>
+                <div className={'oblastt'}>
+                <div><input className={"inputT"}
+                            type={"text"}
+                            placeholder={"Введите название команды"}
+                            onChange={(event => {setKommandName(event.target.value)})}/></div>
 
                     <div><input className={"inputT"}
                                 type={"text"}
@@ -128,22 +127,24 @@ export const Registration = () => {
                                     Password = event.target.value
                                 }}/></div>
 
-                    <button className={"inputTTT"}
-                            onClick={async () => {
-                               /* if (Password > 0 && KommandName > 0 && Member.filter((it) => (
-                                    it.isCaptain === true
-                                )).length === 1) {*/
-                                    console.log(KommandName + " " + Tel + " " + GR + " " + Password + " " + LN + " " + MN
-                                        + " " + Name)
-                                    dispatch(registration((await test(KommandName, Password, LN, Name, MN, Tel, GR))))
-                                    navigate("/Reg")
-                                }
-                            }/*}*/>
-                        Regist
-                    </button>
+                <button className={"inputTTT"}
+                        onClick={async () => {
+                            if (Password>0 && KommandName>0 && Member.filter((it)=>(
+                                it.isCaptain === true
+                            )).length === 1)
+                            {
+                                console.log(KommandName + " " + Tel +  " " + GR + " " + Password + " " + LN + " "+ MN
+                                    + " " + Name)
+                                dispatch(registration((await test(KommandName, Password, LN, Name, MN, Tel, GR))))
+                                navigate("/Reg")
+                            }
+                        }}>
+                    Regist
+                </button>
                 </div>
-            </>
-        )
-    }
+                </div>
+        </>
+    )
+}
 
 }
